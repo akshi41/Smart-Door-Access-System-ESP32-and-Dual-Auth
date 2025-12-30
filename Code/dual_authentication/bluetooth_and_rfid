@@ -1,0 +1,70 @@
+//bluetooth is complusory to scan the rfid
+
+#include <SPI.h>
+#include <MFRC522.h>
+#include <ESP32Servo.h>
+#include "BluetoothSerial.h"
+
+BluetoothSerial SerialBT;
+
+#define SDA_PIN 5
+#define RST_PIN 22
+#define SERVO_PIN 13
+#define BUZZER 4
+
+MFRC522 rfid(SDA_PIN, RST_PIN);
+Servo door;
+
+bool bluetoothOK = false;
+
+void setup() {
+  Serial.begin(115200);
+  SerialBT.begin("ESP32_DOOR");
+
+  SPI.begin();
+  rfid.PCD_Init();
+
+  door.attach(SERVO_PIN);
+  door.write(0);  // Door closed
+
+  pinMode(BUZZER, OUTPUT);
+
+  Serial.println("Bluetooth + RFID Door Ready");
+}
+
+void loop() {
+
+  // Step 1: Bluetooth
+  if (SerialBT.available()) {
+    String cmd = SerialBT.readStringUntil('\n');
+    cmd.trim();
+
+    if (cmd == "OPEN") {
+      bluetoothOK = true;
+      SerialBT.println("Bluetooth OK. Scan any RFID card.");
+    }
+  }
+
+  // Step 2: RFID
+  if (bluetoothOK) {
+    if (rfid.PICC_IsNewCardPresent() && rfid.PICC_ReadCardSerial()) {
+      openDoor();
+      bluetoothOK = false;
+      rfid.PICC_HaltA();
+    }
+  }
+}
+
+void openDoor() {
+  SerialBT.println("Door Opened");
+
+  digitalWrite(BUZZER, HIGH);
+  delay(400);
+  digitalWrite(BUZZER, LOW);
+
+  door.write(90);   // Open
+  delay(5000);
+
+  door.write(0);    // Close
+  SerialBT.println("Door Closed");
+}
