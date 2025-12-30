@@ -81,3 +81,46 @@ Steps:
 1. Power the ESP32  
 2. Connect Bluetooth to **ESP32_DOOR**  
 3. Send:
+
+
+The door will open.
+
+---
+
+## 🧪 How to Run
+
+1. Upload the Arduino code to ESP32  
+2. Connect all components as per wiring table  
+3. Power the ESP32  
+4. Use:
+   - Bluetooth `OPEN` command  
+   **OR**
+   - Tap RFID card  
+5. Door opens and closes automatically
+
+---
+
+## 🎯 Applications
+
+- Smart Home Door Lock  
+- Office Entry System  
+- Hostel or Lab Access Control  
+- IoT Security Projects  
+
+---
+
+## 🔮 Future Improvements
+
+- Add LCD or OLED display  
+- Add password using mobile app  
+- Add cloud logging (Firebase / ThingSpeak)  
+- Add mobile UI buttons  
+- Add face recognition (ESP32-CAM)
+
+---
+
+## 👨‍💻 Author
+
+**Akshitha**  
+ESP32 | IoT | Embedded Systems  
+
