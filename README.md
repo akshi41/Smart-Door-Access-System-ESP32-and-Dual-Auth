@@ -12,6 +12,7 @@ This project demonstrates a **secure, flexible and low-cost IoT-based access con
 - **Servo motor** automatically opens and closes the door  
 - **Buzzer** gives audio alert when the door opens  
 - Works in real-time using **ESP32**
+- 
 
 ---
 
