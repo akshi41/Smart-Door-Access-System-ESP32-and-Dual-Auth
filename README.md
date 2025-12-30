@@ -99,6 +99,15 @@ The door will open.
 5. Door opens and closes automatically
 
 ---
+## 🎬 Demo Video
+
+Watch the working demo of the Smart Door Access System here:  
+
+Automatic Door both rfid and bluetooth:
+https://drive.google.com/file/d/1u2zA2EkUEI9YTgHzT9D-YhT66AeXmCqj/view?usp=sharing
+
+Automatic Door both rfid or bluetooth:
+https://drive.google.com/file/d/1FoQ6u42a_N5dw5mSJE1sLqOQTSOPSJGd/view?usp=sharing
 
 ## 🎯 Applications
 
